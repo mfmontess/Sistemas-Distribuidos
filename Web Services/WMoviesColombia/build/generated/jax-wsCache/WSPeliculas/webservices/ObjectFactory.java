@@ -77,6 +77,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Reserva }
+     * 
+     */
+    public Reserva createReserva() {
+        return new Reserva();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerPeliculas }{@code >}}
      * 
      */

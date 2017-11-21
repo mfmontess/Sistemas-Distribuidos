@@ -11,4 +11,22 @@ package Model;
  */
 public class Reserva {
     
+    private Pelicula pelicula;
+    private int id;
+
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
+
+    public void setId(int idReserva) {
+        this.id = idReserva;
+    }
 }

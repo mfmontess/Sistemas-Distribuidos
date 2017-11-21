@@ -30,7 +30,7 @@ public class Pelicula {
         this.resumen = resumen;
         this.director = director;
         this.duracion = duracion;
-        this.estado = EstadoPelicula.DISPONIBLE;
+        this.estado = EstadoPelicula.ObtenerEstado(estado);
     }
 
     public int getId() {

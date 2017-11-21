@@ -7,17 +7,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para reservarPelicula complex type.
+ * <p>Java class for reservarPelicula complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="reservarPelicula"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="idPelicula" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="idUsuario" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -28,44 +28,44 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "reservarPelicula", propOrder = {
-    "arg0",
-    "arg1"
+    "idPelicula",
+    "idUsuario"
 })
 public class ReservarPelicula {
 
-    protected int arg0;
-    protected int arg1;
+    protected int idPelicula;
+    protected int idUsuario;
 
     /**
-     * Obtiene el valor de la propiedad arg0.
+     * Gets the value of the idPelicula property.
      * 
      */
-    public int getArg0() {
-        return arg0;
+    public int getIdPelicula() {
+        return idPelicula;
     }
 
     /**
-     * Define el valor de la propiedad arg0.
+     * Sets the value of the idPelicula property.
      * 
      */
-    public void setArg0(int value) {
-        this.arg0 = value;
+    public void setIdPelicula(int value) {
+        this.idPelicula = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad arg1.
+     * Gets the value of the idUsuario property.
      * 
      */
-    public int getArg1() {
-        return arg1;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
     /**
-     * Define el valor de la propiedad arg1.
+     * Sets the value of the idUsuario property.
      * 
      */
-    public void setArg1(int value) {
-        this.arg1 = value;
+    public void setIdUsuario(int value) {
+        this.idUsuario = value;
     }
 
 }

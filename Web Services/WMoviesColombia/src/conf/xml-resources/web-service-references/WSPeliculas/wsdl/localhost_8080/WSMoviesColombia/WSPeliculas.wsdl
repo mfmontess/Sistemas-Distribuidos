@@ -4,31 +4,31 @@
 <xsd:import namespace="http://WebServices/" schemaLocation="http://localhost:8080/WSMoviesColombia/WSPeliculas?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="obtenerPeliculas">
-<part name="parameters" element="tns:obtenerPeliculas"/>
-</message>
-<message name="obtenerPeliculasResponse">
-<part name="parameters" element="tns:obtenerPeliculasResponse"/>
-</message>
 <message name="reservarPelicula">
 <part name="parameters" element="tns:reservarPelicula"/>
 </message>
 <message name="reservarPeliculaResponse">
 <part name="parameters" element="tns:reservarPeliculaResponse"/>
 </message>
+<message name="obtenerPeliculas">
+<part name="parameters" element="tns:obtenerPeliculas"/>
+</message>
+<message name="obtenerPeliculasResponse">
+<part name="parameters" element="tns:obtenerPeliculasResponse"/>
+</message>
 <portType name="WSPeliculas">
-<operation name="obtenerPeliculas">
-<input wsam:Action="http://WebServices/WSPeliculas/obtenerPeliculasRequest" message="tns:obtenerPeliculas"/>
-<output wsam:Action="http://WebServices/WSPeliculas/obtenerPeliculasResponse" message="tns:obtenerPeliculasResponse"/>
-</operation>
 <operation name="reservarPelicula">
 <input wsam:Action="http://WebServices/WSPeliculas/reservarPeliculaRequest" message="tns:reservarPelicula"/>
 <output wsam:Action="http://WebServices/WSPeliculas/reservarPeliculaResponse" message="tns:reservarPeliculaResponse"/>
 </operation>
+<operation name="obtenerPeliculas">
+<input wsam:Action="http://WebServices/WSPeliculas/obtenerPeliculasRequest" message="tns:obtenerPeliculas"/>
+<output wsam:Action="http://WebServices/WSPeliculas/obtenerPeliculasResponse" message="tns:obtenerPeliculasResponse"/>
+</operation>
 </portType>
 <binding name="WSPeliculasPortBinding" type="tns:WSPeliculas">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="obtenerPeliculas">
+<operation name="reservarPelicula">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -37,7 +37,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="reservarPelicula">
+<operation name="obtenerPeliculas">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

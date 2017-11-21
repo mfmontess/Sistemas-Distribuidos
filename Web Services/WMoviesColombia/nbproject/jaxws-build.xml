@@ -26,22 +26,6 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-WSPeliculas" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/WSPeliculas"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WSPeliculas" destdir="${build.generated.dir}/jax-wsCache/WSPeliculas" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WSPeliculas/wsdl/localhost_8080/WSMoviesColombia/WSPeliculas.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/WSMoviesColombia/WSPeliculas?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WSPeliculas/wsdl/localhost_8080/WSMoviesColombia/WSPeliculas.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/WSPeliculas"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/WSPeliculas">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-WSPeliculas" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/WSPeliculas"/>
-    </target>
     <target name="wsimport-client-WSUsuarios" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WSUsuarios"/>
         <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WSUsuarios" destdir="${build.generated.dir}/jax-wsCache/WSUsuarios" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WSUsuarios/wsdl/localhost_8080/WSMoviesColombia/WSUsuarios.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/WSMoviesColombia/WSUsuarios?wsdl" xnocompile="true" xendorsed="true">
@@ -58,5 +42,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
         <delete dir="${build.generated.dir}/jax-wsCache/WSUsuarios"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-WSPeliculas, wsimport-client-WSUsuarios"/>
+    <target name="wsimport-client-WSPeliculas" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WSPeliculas"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WSPeliculas" destdir="${build.generated.dir}/jax-wsCache/WSPeliculas" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WSPeliculas/wsdl/localhost_8080/WSMoviesColombia/WSPeliculas.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/WSMoviesColombia/WSPeliculas?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WSPeliculas/wsdl/localhost_8080/WSMoviesColombia/WSPeliculas.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WSPeliculas"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WSPeliculas">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-WSPeliculas" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/WSPeliculas"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-WSUsuarios, wsimport-client-WSPeliculas"/>
 </project>

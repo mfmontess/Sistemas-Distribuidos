@@ -27,6 +27,24 @@ public interface WSPeliculas {
 
     /**
      * 
+     * @param idUsuario
+     * @param idPelicula
+     * @return
+     *     returns webservices.Reserva
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "reservarPelicula", targetNamespace = "http://WebServices/", className = "webservices.ReservarPelicula")
+    @ResponseWrapper(localName = "reservarPeliculaResponse", targetNamespace = "http://WebServices/", className = "webservices.ReservarPeliculaResponse")
+    @Action(input = "http://WebServices/WSPeliculas/reservarPeliculaRequest", output = "http://WebServices/WSPeliculas/reservarPeliculaResponse")
+    public Reserva reservarPelicula(
+        @WebParam(name = "idPelicula", targetNamespace = "")
+        int idPelicula,
+        @WebParam(name = "idUsuario", targetNamespace = "")
+        int idUsuario);
+
+    /**
+     * 
      * @return
      *     returns java.util.List<webservices.Pelicula>
      */
@@ -36,20 +54,5 @@ public interface WSPeliculas {
     @ResponseWrapper(localName = "obtenerPeliculasResponse", targetNamespace = "http://WebServices/", className = "webservices.ObtenerPeliculasResponse")
     @Action(input = "http://WebServices/WSPeliculas/obtenerPeliculasRequest", output = "http://WebServices/WSPeliculas/obtenerPeliculasResponse")
     public List<Pelicula> obtenerPeliculas();
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "reservarPelicula", targetNamespace = "http://WebServices/", className = "webservices.ReservarPelicula")
-    @ResponseWrapper(localName = "reservarPeliculaResponse", targetNamespace = "http://WebServices/", className = "webservices.ReservarPeliculaResponse")
-    @Action(input = "http://WebServices/WSPeliculas/reservarPeliculaRequest", output = "http://WebServices/WSPeliculas/reservarPeliculaResponse")
-    public void reservarPelicula(
-        @WebParam(name = "arg0", targetNamespace = "")
-        int arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        int arg1);
 
 }

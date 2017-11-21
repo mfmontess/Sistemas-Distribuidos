@@ -12,6 +12,16 @@ package Model;
  public enum EstadoPelicula{
      DISPONIBLE(1,"Disponible"),
      RESERVADA(2,"Reservada");
+
+    static EstadoPelicula ObtenerEstado(int estado) {
+        switch (estado){
+            case 1:
+                return DISPONIBLE;
+            case 2:
+                return RESERVADA;
+        }
+         return null;
+    }
      
     private int id;
     private String nombre;

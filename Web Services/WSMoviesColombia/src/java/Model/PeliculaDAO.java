@@ -45,9 +45,10 @@ public class PeliculaDAO {
         Pelicula pelicula= null;
         Connection accessBD = Conexion.getConexion();
         try{
-            PreparedStatement ps = accessBD.prepareCall("select * from peliculas");
+            PreparedStatement ps = accessBD.prepareCall("select pelicula_id, titulo, fecha_estreno,resumen,director,duracion_minutos, estado_pelicula_id\n" +
+                "from db_movies_colombia.peliculas where pelicula_id=?");
+            ps.setInt(1,id);
             ResultSet rs = ps.executeQuery();
-            
             if(rs.next()){
                 pelicula = new Pelicula(rs.getInt(1)
                         , rs.getString(2)
