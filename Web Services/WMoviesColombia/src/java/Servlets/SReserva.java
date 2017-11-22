@@ -7,12 +7,17 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.ws.WebServiceRef;
+import webservices.EstadoPelicula;
+import webservices.Pelicula;
+import webservices.Reserva;
 import webservices.Usuario;
 import webservices.WSPeliculas;
 import webservices.WSPeliculas_Service;
@@ -44,8 +49,19 @@ public class SReserva extends HttpServlet {
         int idUsuario = ((Usuario)request.getSession().getAttribute("ValidUsuario")).getId();
         
         WSPeliculas port = servicePeliculas.getWSPeliculasPort();
-        port.reservarPelicula(idPelicula, idUsuario);
-        //request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+        Reserva reserva = port.reservarPelicula(idPelicula, idUsuario);
+                
+        HttpSession sesion= request.getSession();
+        
+        if (reserva != null){
+            List<Pelicula> peliculas = obtenerPeliculas(null);
+            sesion.setAttribute("peliculas", peliculas);
+
+            request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+        } else {
+            sesion.setAttribute("error", "La pelicula ya se encuentra reservada");
+            request.getRequestDispatcher("reserva.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,7 +76,19 @@ public class SReserva extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String consultar = request.getParameter("consultar");
+        if ("true".equals(consultar)) {
+            load(request);
+            request.getRequestDispatcher("reserva.jsp").forward(request, response);
+        } else {
+            processRequest(request, response);
+        }
+    }
+    
+    private void load(HttpServletRequest request){
+        HttpSession sesion= request.getSession();
+        List<Pelicula> peliculas = obtenerPeliculas(EstadoPelicula.DISPONIBLE);
+        sesion.setAttribute("peliculasDisponibles", peliculas);
     }
 
     /**
@@ -87,4 +115,8 @@ public class SReserva extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private List<Pelicula> obtenerPeliculas(EstadoPelicula estado) {
+        WSPeliculas port = servicePeliculas.getWSPeliculasPort();
+        return port.obtenerPeliculas(estado);
+    }
 }

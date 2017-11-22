@@ -45,6 +45,7 @@ public interface WSPeliculas {
 
     /**
      * 
+     * @param arg0
      * @return
      *     returns java.util.List<webservices.Pelicula>
      */
@@ -53,6 +54,8 @@ public interface WSPeliculas {
     @RequestWrapper(localName = "obtenerPeliculas", targetNamespace = "http://WebServices/", className = "webservices.ObtenerPeliculas")
     @ResponseWrapper(localName = "obtenerPeliculasResponse", targetNamespace = "http://WebServices/", className = "webservices.ObtenerPeliculasResponse")
     @Action(input = "http://WebServices/WSPeliculas/obtenerPeliculasRequest", output = "http://WebServices/WSPeliculas/obtenerPeliculasResponse")
-    public List<Pelicula> obtenerPeliculas();
+    public List<Pelicula> obtenerPeliculas(
+        @WebParam(name = "arg0", targetNamespace = "")
+        EstadoPelicula arg0);
 
 }

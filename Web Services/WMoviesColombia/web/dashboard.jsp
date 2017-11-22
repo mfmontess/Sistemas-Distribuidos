@@ -23,7 +23,7 @@
         <h1>Peliculas </h1>
         <ul>
             <li><a href="dashboard.jsp">Inicio</a></li>
-            <li><a href="reserva.jsp">Reservar</a></li>
+            <li><a href="SReserva?consultar=true">Reservar</a></li>
         </ul>
             <c:forEach items="${peliculas}" var="pelicula">
                 <table border="1">

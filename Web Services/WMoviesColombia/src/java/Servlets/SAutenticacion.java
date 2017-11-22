@@ -67,7 +67,7 @@ public class SAutenticacion extends HttpServlet {
     
     private List<Pelicula> obtenerPeliculas(){
         WSPeliculas port = servicePeliculas.getWSPeliculasPort();
-        return port.obtenerPeliculas();
+        return port.obtenerPeliculas(null);
     }
     
     private Usuario validar(java.lang.String nombre, java.lang.String contraseña) {

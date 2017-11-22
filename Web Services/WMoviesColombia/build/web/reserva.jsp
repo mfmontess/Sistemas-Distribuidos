@@ -4,6 +4,7 @@
     Author     : MICHAEL
 --%>
 
+<%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.*"%>
 <%@page import="webservices.Pelicula"%>
 <%@page import="webservices.Usuario"%>
@@ -17,15 +18,16 @@
     </head>
     
         <jsp:useBean id="ValidUsuario" scope="session" class="webservices.Usuario" />
-        <h1>Reserva de Peliculas | Hola 
+        <h1 align="right">| Hola 
             <jsp:getProperty name="ValidUsuario" property="nombre" />
         </h1>
+        <h1>Reserva de Peliculas</h1>
         <ul>
             <li><a href="dashboard.jsp">Inicio</a></li>
             <li><a href="reserva.jsp">Reservar</a></li>
         </ul>
         <form action="SReserva" method="POST">
-            <c:forEach items="${peliculas}" var="pelicula">
+            <c:forEach items="${peliculasDisponibles}" var="pelicula">
                 <table border="1">
                     <tr>
                         <td>
@@ -55,13 +57,20 @@
                         <td>Resumen</td>
                         <td>${pelicula.resumen}</td>
                     </tr>
-                    <tr>
-                        <td colspan="3">
-                            <input type="submit" value="Reservar" name="btnReservar" align="center"/>                            
-                        </td>
-                    </tr>
-                </table>
-                </br>
-            </c:forEach>
+                </c:forEach>
+                <tr>
+                    <td colspan="3">
+                        <input type="submit" value="Reservar" name="btnReservar" align="center"/>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <%
+                    HttpSession sesion= request.getSession();
+                    if(sesion.getAttribute("error") != null){   
+                        out.println("<label>La pelicula ya se encuentra reservada</label>");
+                    }
+                %>
+            </div>
         </form>
 </html>

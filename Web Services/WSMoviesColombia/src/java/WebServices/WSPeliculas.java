@@ -27,9 +27,13 @@ public class WSPeliculas {
      * @return Lista de peliculas existentes
      */
     @WebMethod(operationName = "obtenerPeliculas")
-    public List<Pelicula> obtenerPeliculas() {
+    public List<Pelicula> obtenerPeliculas(EstadoPelicula estado) {
         PeliculaDAO db = new PeliculaDAO();
-        List<Pelicula> peliculas = db.obtenerPeliculas();
+        List<Pelicula> peliculas = null;
+        if (estado == null)
+            peliculas = db.obtenerPeliculas(0);
+        else
+            peliculas = db.obtenerPeliculas(estado.getId());
         return peliculas;
     }
     

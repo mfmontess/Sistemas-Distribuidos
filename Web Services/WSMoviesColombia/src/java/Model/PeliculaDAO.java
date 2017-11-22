@@ -17,12 +17,18 @@ import java.util.ArrayList;
  */
 public class PeliculaDAO {
 
-    public List<Pelicula> obtenerPeliculas() {
+    public List<Pelicula> obtenerPeliculas(int idEstado) {
         ArrayList<Pelicula> peliculas= new ArrayList<>();
         Connection accessBD = Conexion.getConexion();
+        String sql = "";
+        if(idEstado==0)
+            sql ="select pelicula_id, titulo, fecha_estreno,resumen,director,duracion_minutos, estado_pelicula_id\n" +
+                "from db_movies_colombia.peliculas";
+        else
+            sql ="select pelicula_id, titulo, fecha_estreno,resumen,director,duracion_minutos, estado_pelicula_id\n" +
+                "from db_movies_colombia.peliculas where estado_pelicula_id =" + idEstado;
         try{
-            PreparedStatement ps = accessBD.prepareCall("select pelicula_id, titulo, fecha_estreno,resumen,director,duracion_minutos, estado_pelicula_id\n" +
-                "from db_movies_colombia.peliculas");
+            PreparedStatement ps = accessBD.prepareCall(sql);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
