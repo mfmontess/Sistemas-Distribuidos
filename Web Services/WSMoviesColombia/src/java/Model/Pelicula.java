@@ -6,6 +6,7 @@
 package Model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -14,6 +15,13 @@ import java.util.Date;
 public class Pelicula {
     private int id;
     private EstadoPelicula estado;
+    private String nombre;
+    private Date fecha_estreno;
+    private String resumen;
+    private String director;
+    private int duracion;
+    private List<String> paisesProduccion;
+    private List<String> generos;
 
     public EstadoPelicula getEstado() {
         return estado;
@@ -24,6 +32,7 @@ public class Pelicula {
     }
 
     public Pelicula(int id, String nombre, Date fecha_estreno, String resumen, String director, int duracion, int estado) {
+        PeliculaDAO db = new PeliculaDAO();
         this.id = id;
         this.nombre = nombre;
         this.fecha_estreno = fecha_estreno;
@@ -31,6 +40,24 @@ public class Pelicula {
         this.director = director;
         this.duracion = duracion;
         this.estado = EstadoPelicula.ObtenerEstado(estado);
+        this.paisesProduccion = db.obtenerPaisesProduccionPelicula(id);
+        this.generos = db.obtenerGenerosPelicula(id);
+    }
+    
+    public String getPaisesProduccion() {
+        String paises = "";
+        for(String pais : paisesProduccion){
+            paises = paises + pais;
+        }
+        return paises;
+    }
+    
+    public String getGeneros() {
+        String generos = "";
+        for(String genero : this.generos){
+            generos = generos + genero;
+        }
+        return generos;
     }
 
     public int getId() {
@@ -80,9 +107,4 @@ public class Pelicula {
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
-    private String nombre;
-    private Date fecha_estreno;
-    private String resumen;
-    private String director;
-    private int duracion;
 }

@@ -47,6 +47,29 @@ public class PeliculaDAO {
         return peliculas;
     }
 
+    public List<String> obtenerPaisesProduccionPelicula(int idPelicula) {
+        ArrayList<String> paises= new ArrayList<>();
+        Connection accessBD = Conexion.getConexion();
+        String sql = "select pa.nombre\n" +
+            "from db_movies_colombia.peliculas_paises_produccion pp\n" +
+            "inner join db_movies_colombia.peliculas pe\n" +
+            "on pp.pelicula_id = pe.pelicula_id\n" +
+            "inner join db_movies_colombia.paises_produccion pa\n" +
+            "on pp.pais_id = pa.pais_id\n" +
+            "where pe.pelicula_id = " + idPelicula;
+        try{
+            PreparedStatement ps = accessBD.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+               paises.add(rs.getString(2));
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return paises;
+    }
+    
     public Pelicula obtenerPelicula(int id) {
         Pelicula pelicula= null;
         Connection accessBD = Conexion.getConexion();
@@ -82,6 +105,10 @@ public class PeliculaDAO {
         } catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    List<String> obtenerGenerosPelicula(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
