@@ -9,17 +9,34 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Movies Colombia</title>
     </head>
-    <body>
+    <body>        
         <form action="SAutenticacion" method="POST">
-            <div>
-                <label>Nombre: </label>
-                <input type="text" name="txtNombre" />
-                <label>Contraseña: </label>
-                <input type="password" name="txtContraseña" />
-                <input type="submit" value="Ingresar" name="btnIngresar" />
-            </div>
+            <table border="0" style="margin-left: 28%;">
+                <tr>
+                    <td>
+                        <h1>Inicio de Sesión</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nombre:</td>
+                    <td>
+                        <input type="text" name="txtNombre" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Contraseña:</td>
+                    <td>
+                        <input type="password" name="txtContraseña" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Ingresar" name="btnIngresar" align="center"/>                        
+                    </td>
+                </tr>
+            </table>
         </form>
     </body>
 </html>

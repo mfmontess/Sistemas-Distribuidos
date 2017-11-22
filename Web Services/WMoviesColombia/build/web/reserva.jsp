@@ -15,36 +15,53 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Peliculas</title>
     </head>
-    <body>
+    
         <jsp:useBean id="ValidUsuario" scope="session" class="webservices.Usuario" />
-        <h1 align="right">| Hola 
+        <h1>Reserva de Peliculas | Hola 
             <jsp:getProperty name="ValidUsuario" property="nombre" />
         </h1>
-        <h1>Peliculas </h1>
         <ul>
             <li><a href="dashboard.jsp">Inicio</a></li>
             <li><a href="reserva.jsp">Reservar</a></li>
         </ul>
+        <form action="SReserva" method="POST">
             <c:forEach items="${peliculas}" var="pelicula">
                 <table border="1">
                     <tr>
-                        <td>Titulo</td>
-                        <td>Director</td>
-                        <td>Duración</td>
-                        <td>Fecha Estreno</td>
-                        <td>Resumen</td>
-                        <td>Estado</td>
+                        <td>
+                            <input type="radio" name="rdbIdPelicula" value="${pelicula.id}" />
+                        </td>
+                        <td colspan="2">
+                            <h3 align="center">${pelicula.nombre}</h3>
+                        </td>
                     </tr>
                     <tr>
-                        <td>${pelicula.nombre}</td>
-                        <td>${pelicula.director}</td>
+                        <td></td>
+                        <td>Director</td>
+                        <td>${pelicula.director}</td>                        
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Duración</td>
                         <td>${pelicula.duracion}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Fecha Estreno</td>
                         <td>${pelicula.fechaEstreno.toString()}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Resumen</td>
                         <td>${pelicula.resumen}</td>
-                        <td>${pelicula.estado}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <input type="submit" value="Reservar" name="btnReservar" align="center"/>                            
+                        </td>
                     </tr>
                 </table>
                 </br>
             </c:forEach>
-    </body>
+        </form>
 </html>

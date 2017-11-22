@@ -15,29 +15,36 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Peliculas</title>
     </head>
-    
+    <body>
         <jsp:useBean id="ValidUsuario" scope="session" class="webservices.Usuario" />
-        <h1>Reserva de Peliculas, Hola 
+        <h1 align="right">| Hola 
             <jsp:getProperty name="ValidUsuario" property="nombre" />
         </h1>
-        <form action="SReserva" method="POST">
-            <%List<Pelicula> peliculas = (List<Pelicula>)request.getSession().getAttribute("peliculas");
-            for (Pelicula pelicula: peliculas){ %>
-            <label>Titulo: </label> <%=pelicula.getNombre()%>            
-            <br />
-            <label>Director: </label> <%=pelicula.getDirector()%>
-            <br />
-            <label>Duracion: </label> <%=pelicula.getDuracion()%>
-            <br />
-            <label>Fecha de estreno: </label> <%=pelicula.getFechaEstreno()%>
-            <br />
-            <label>Resumen: </label> <%=pelicula.getResumen()%>
-            <br />
-            <input type="submit" text="Reservar" value="<%=pelicula.getId()%>" name="btnReservar"/>
-            <br />
-            <%}%>
-            
-        </form>
-            
-    
+        <h1>Peliculas </h1>
+        <ul>
+            <li><a href="dashboard.jsp">Inicio</a></li>
+            <li><a href="reserva.jsp">Reservar</a></li>
+        </ul>
+            <c:forEach items="${peliculas}" var="pelicula">
+                <table border="1">
+                    <tr>
+                        <td>Titulo</td>
+                        <td>Director</td>
+                        <td>Duración</td>
+                        <td>Fecha Estreno</td>
+                        <td>Resumen</td>
+                        <td>Estado</td>
+                    </tr>
+                    <tr>
+                        <td>${pelicula.nombre}</td>
+                        <td>${pelicula.director}</td>
+                        <td>${pelicula.duracion}</td>
+                        <td>${pelicula.fechaEstreno.toString()}</td>
+                        <td>${pelicula.resumen}</td>
+                        <td>${pelicula.estado}</td>
+                    </tr>
+                </table>
+                </br>
+            </c:forEach>
+    </body>
 </html>

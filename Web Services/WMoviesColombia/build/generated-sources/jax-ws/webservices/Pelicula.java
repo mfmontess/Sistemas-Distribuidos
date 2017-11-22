@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for pelicula complex type.
+ * <p>Clase Java para pelicula complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="pelicula"&gt;
@@ -58,7 +58,7 @@ public class Pelicula {
     protected String resumen;
 
     /**
-     * Gets the value of the director property.
+     * Obtiene el valor de la propiedad director.
      * 
      * @return
      *     possible object is
@@ -70,7 +70,7 @@ public class Pelicula {
     }
 
     /**
-     * Sets the value of the director property.
+     * Define el valor de la propiedad director.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +82,7 @@ public class Pelicula {
     }
 
     /**
-     * Gets the value of the duracion property.
+     * Obtiene el valor de la propiedad duracion.
      * 
      */
     public int getDuracion() {
@@ -90,7 +90,7 @@ public class Pelicula {
     }
 
     /**
-     * Sets the value of the duracion property.
+     * Define el valor de la propiedad duracion.
      * 
      */
     public void setDuracion(int value) {
@@ -98,7 +98,7 @@ public class Pelicula {
     }
 
     /**
-     * Gets the value of the estado property.
+     * Obtiene el valor de la propiedad estado.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class Pelicula {
     }
 
     /**
-     * Sets the value of the estado property.
+     * Define el valor de la propiedad estado.
      * 
      * @param value
      *     allowed object is
@@ -122,7 +122,7 @@ public class Pelicula {
     }
 
     /**
-     * Gets the value of the fechaEstreno property.
+     * Obtiene el valor de la propiedad fechaEstreno.
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class Pelicula {
     }
 
     /**
-     * Sets the value of the fechaEstreno property.
+     * Define el valor de la propiedad fechaEstreno.
      * 
      * @param value
      *     allowed object is
@@ -146,7 +146,7 @@ public class Pelicula {
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
      * 
      */
     public int getId() {
@@ -154,7 +154,7 @@ public class Pelicula {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
      * 
      */
     public void setId(int value) {
@@ -162,7 +162,7 @@ public class Pelicula {
     }
 
     /**
-     * Gets the value of the nombre property.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
@@ -174,7 +174,7 @@ public class Pelicula {
     }
 
     /**
-     * Sets the value of the nombre property.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
@@ -186,7 +186,7 @@ public class Pelicula {
     }
 
     /**
-     * Gets the value of the resumen property.
+     * Obtiene el valor de la propiedad resumen.
      * 
      * @return
      *     possible object is
@@ -198,7 +198,7 @@ public class Pelicula {
     }
 
     /**
-     * Sets the value of the resumen property.
+     * Define el valor de la propiedad resumen.
      * 
      * @param value
      *     allowed object is
