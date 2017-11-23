@@ -20,27 +20,39 @@ public class Pelicula {
     private String resumen;
     private String director;
     private int duracion;
-    private List<String> paisesProduccion;
-    private List<String> generos;
-    private List<String> idiomas;
+    private String paisesProduccion;
 
     public String getPaisesProduccion() {
+        return paisesProduccion;
+    }
+
+    public String getGeneros() {
+        return generos;
+    }
+
+    public String getIdiomas() {
+        return idiomas;
+    }
+    private String generos;
+    private String idiomas;
+
+    public String obtenerPaisesProduccion(List<String> paisesProduccion) {
         String paises="";
         for(String pais: paisesProduccion)
             paises=pais+","+paises;
         return paises.substring(0, paises.length()-1);
     }
 
-    public String getGeneros() {
+    public String obtenerGeneros(List<String> lstGeneros) {
         String generos="";
-        for(String genero: this.generos)
+        for(String genero: lstGeneros)
             generos=genero+","+generos;
         return generos.substring(0, generos.length()-1);
     }
 
-    public String getIdiomas() {
+    public String obtenerIdiomas(List<String> lstIdiomas) {
         String idiomas="";
-        for(String idioma: this.idiomas)
+        for(String idioma: lstIdiomas)
             idiomas=idioma+","+idiomas;
         return idiomas.substring(0, idiomas.length()-1);
     }
@@ -62,9 +74,9 @@ public class Pelicula {
         this.director = director;
         this.duracion = duracion;
         this.estado = EstadoPelicula.ObtenerEstado(estado);
-        this.paisesProduccion = db.obtenerPaisesProduccionPelicula(id);
-        this.generos = db.obtenerGenerosPelicula(id);
-        this.idiomas = db.obtenerIdiomasPelicula(id);
+        this.paisesProduccion = obtenerPaisesProduccion(db.obtenerPaisesProduccionPelicula(id));
+        this.generos = obtenerGeneros(db.obtenerGenerosPelicula(id));
+        this.idiomas = obtenerIdiomas(db.obtenerIdiomasPelicula(id));
     }
 
     public int getId() {

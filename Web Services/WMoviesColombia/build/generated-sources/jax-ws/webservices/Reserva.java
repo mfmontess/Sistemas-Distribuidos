@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para reserva complex type.
+ * <p>Java class for reserva complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="reserva"&gt;
@@ -37,7 +37,7 @@ public class Reserva {
     protected Pelicula pelicula;
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -45,7 +45,7 @@ public class Reserva {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
@@ -53,7 +53,7 @@ public class Reserva {
     }
 
     /**
-     * Obtiene el valor de la propiedad pelicula.
+     * Gets the value of the pelicula property.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public class Reserva {
     }
 
     /**
-     * Define el valor de la propiedad pelicula.
+     * Sets the value of the pelicula property.
      * 
      * @param value
      *     allowed object is
