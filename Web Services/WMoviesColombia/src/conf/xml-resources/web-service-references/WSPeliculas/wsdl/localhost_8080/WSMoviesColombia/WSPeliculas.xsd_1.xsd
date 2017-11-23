@@ -10,7 +10,7 @@
 
 <xs:complexType name="obtenerPeliculas">
 <xs:sequence>
-<xs:element name="arg0" type="tns:estadoPelicula" minOccurs="0"/>
+<xs:element name="estado" type="tns:estadoPelicula" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

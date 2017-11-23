@@ -1,5 +1,3 @@
-CREATE DATABASE db_movies_colombia;
-
 CREATE TABLE db_movies_colombia.usuarios(
     usuario_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre varchar(10) NOT NULL,

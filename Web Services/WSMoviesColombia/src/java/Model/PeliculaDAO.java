@@ -47,29 +47,6 @@ public class PeliculaDAO {
         return peliculas;
     }
 
-    public List<String> obtenerPaisesProduccionPelicula(int idPelicula) {
-        ArrayList<String> paises= new ArrayList<>();
-        Connection accessBD = Conexion.getConexion();
-        String sql = "select pa.nombre\n" +
-            "from db_movies_colombia.peliculas_paises_produccion pp\n" +
-            "inner join db_movies_colombia.peliculas pe\n" +
-            "on pp.pelicula_id = pe.pelicula_id\n" +
-            "inner join db_movies_colombia.paises_produccion pa\n" +
-            "on pp.pais_id = pa.pais_id\n" +
-            "where pe.pelicula_id = " + idPelicula;
-        try{
-            PreparedStatement ps = accessBD.prepareCall(sql);
-            ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
-               paises.add(rs.getString(2));
-            }
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        return paises;
-    }
-    
     public Pelicula obtenerPelicula(int id) {
         Pelicula pelicula= null;
         Connection accessBD = Conexion.getConexion();
@@ -107,8 +84,64 @@ public class PeliculaDAO {
         }
     }
 
-    List<String> obtenerGenerosPelicula(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<String> obtenerPaisesProduccionPelicula(int id) {
+        ArrayList<String> paises= new ArrayList<>();
+        Connection accessBD = Conexion.getConexion();
+        String sql= "SELECT nombre FROM db_movies_colombia.peliculas_paises_produccion p\n" +
+                        "inner join db_movies_colombia.paises_produccion pp\n" +
+                        "on p.pais_id = pp.pais_id\n" +
+                        "where p.pelicula_id=" + id;
+        try{
+            PreparedStatement ps = accessBD.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                paises.add(rs.getString(1));
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return paises;
+    }
+
+    public List<String> obtenerGenerosPelicula(int id) {
+        ArrayList<String> generos= new ArrayList<>();
+        Connection accessBD = Conexion.getConexion();
+        String sql= "SELECT descripcion FROM db_movies_colombia.peliculas_generos p\n" +
+                    "inner join db_movies_colombia.generos g\n" +
+                    "on p.genero_id = g.genero_id\n" +
+                    "where p.pelicula_id=" + id;
+        try{
+            PreparedStatement ps = accessBD.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                generos.add(rs.getString(1));
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return generos;
+    }
+
+    List<String> obtenerIdiomasPelicula(int id) {
+        ArrayList<String> idiomas= new ArrayList<>();
+        Connection accessBD = Conexion.getConexion();
+        String sql= "SELECT descripcion FROM db_movies_colombia.peliculas_idiomas p\n" +
+                    "inner join db_movies_colombia.idiomas i\n" +
+                    "on p.idioma_id = i.idioma_id\n" +
+                    "where p.pelicula_id=" + id;
+        try{
+            PreparedStatement ps = accessBD.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                idiomas.add(rs.getString(1));
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return idiomas;
     }
     
 }

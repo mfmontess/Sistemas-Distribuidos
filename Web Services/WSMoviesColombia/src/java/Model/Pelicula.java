@@ -22,6 +22,28 @@ public class Pelicula {
     private int duracion;
     private List<String> paisesProduccion;
     private List<String> generos;
+    private List<String> idiomas;
+
+    public String getPaisesProduccion() {
+        String paises="";
+        for(String pais: paisesProduccion)
+            paises=pais+","+paises;
+        return paises.substring(0, paises.length()-1);
+    }
+
+    public String getGeneros() {
+        String generos="";
+        for(String genero: this.generos)
+            generos=genero+","+generos;
+        return generos.substring(0, generos.length()-1);
+    }
+
+    public String getIdiomas() {
+        String idiomas="";
+        for(String idioma: this.idiomas)
+            idiomas=idioma+","+idiomas;
+        return idiomas.substring(0, idiomas.length()-1);
+    }
 
     public EstadoPelicula getEstado() {
         return estado;
@@ -42,22 +64,7 @@ public class Pelicula {
         this.estado = EstadoPelicula.ObtenerEstado(estado);
         this.paisesProduccion = db.obtenerPaisesProduccionPelicula(id);
         this.generos = db.obtenerGenerosPelicula(id);
-    }
-    
-    public String getPaisesProduccion() {
-        String paises = "";
-        for(String pais : paisesProduccion){
-            paises = paises + pais;
-        }
-        return paises;
-    }
-    
-    public String getGeneros() {
-        String generos = "";
-        for(String genero : this.generos){
-            generos = generos + genero;
-        }
-        return generos;
+        this.idiomas = db.obtenerIdiomasPelicula(id);
     }
 
     public int getId() {

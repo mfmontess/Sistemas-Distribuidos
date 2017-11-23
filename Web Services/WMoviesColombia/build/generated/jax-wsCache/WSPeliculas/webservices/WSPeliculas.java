@@ -27,6 +27,21 @@ public interface WSPeliculas {
 
     /**
      * 
+     * @param estado
+     * @return
+     *     returns java.util.List<webservices.Pelicula>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerPeliculas", targetNamespace = "http://WebServices/", className = "webservices.ObtenerPeliculas")
+    @ResponseWrapper(localName = "obtenerPeliculasResponse", targetNamespace = "http://WebServices/", className = "webservices.ObtenerPeliculasResponse")
+    @Action(input = "http://WebServices/WSPeliculas/obtenerPeliculasRequest", output = "http://WebServices/WSPeliculas/obtenerPeliculasResponse")
+    public List<Pelicula> obtenerPeliculas(
+        @WebParam(name = "estado", targetNamespace = "")
+        EstadoPelicula estado);
+
+    /**
+     * 
      * @param idUsuario
      * @param idPelicula
      * @return
@@ -42,20 +57,5 @@ public interface WSPeliculas {
         int idPelicula,
         @WebParam(name = "idUsuario", targetNamespace = "")
         int idUsuario);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.util.List<webservices.Pelicula>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerPeliculas", targetNamespace = "http://WebServices/", className = "webservices.ObtenerPeliculas")
-    @ResponseWrapper(localName = "obtenerPeliculasResponse", targetNamespace = "http://WebServices/", className = "webservices.ObtenerPeliculasResponse")
-    @Action(input = "http://WebServices/WSPeliculas/obtenerPeliculasRequest", output = "http://WebServices/WSPeliculas/obtenerPeliculasResponse")
-    public List<Pelicula> obtenerPeliculas(
-        @WebParam(name = "arg0", targetNamespace = "")
-        EstadoPelicula arg0);
 
 }

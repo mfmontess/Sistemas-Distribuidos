@@ -27,7 +27,7 @@ public class WSPeliculas {
      * @return Lista de peliculas existentes
      */
     @WebMethod(operationName = "obtenerPeliculas")
-    public List<Pelicula> obtenerPeliculas(EstadoPelicula estado) {
+    public List<Pelicula> obtenerPeliculas(@WebParam(name = "estado")EstadoPelicula estado) {
         PeliculaDAO db = new PeliculaDAO();
         List<Pelicula> peliculas = null;
         if (estado == null)
